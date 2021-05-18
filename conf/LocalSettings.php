@@ -154,7 +154,7 @@ wfLoadExtension( 'LDAPAuthentication2' );
 # Note(decentral1se): leaving here in case we need them one day
 # LDAPUserInfo
 # https://www.mediawiki.org/wiki/Extension:LDAPUserInfo
-# wfLoadExtension( 'LDAPUserInfo' );
+wfLoadExtension( 'LDAPUserInfo' );
 
 # Note(decentral1se): leaving here in case we need them one day
 # LDAPAuthorization

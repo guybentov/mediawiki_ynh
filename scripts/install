@@ -27,6 +27,8 @@ domain=$YNH_APP_ARG_DOMAIN
 path_url=$YNH_APP_ARG_PATH
 admin=$YNH_APP_ARG_ADMIN
 admin_password=$YNH_APP_ARG_PASSWORD
+ldap_autologin=$YNH_APP_ARG_LDAP_AUTOLOGIN
+local_accounts=$YNH_APP_ARG_LOCAL_ACCOUNTS
 is_public=$YNH_APP_ARG_IS_PUBLIC
 language=$YNH_APP_ARG_LANGUAGE
 wiki_name=$YNH_APP_ARG_WIKI_NAME
@@ -53,6 +55,8 @@ ynh_app_setting_set --app=$app --key=domain --value=$domain
 ynh_app_setting_set --app=$app --key=path --value=$path_url
 ynh_app_setting_set --app=$app --key=admin --value=$admin
 ynh_app_setting_set --app=$app --key=admin_password --value=$admin_password
+ynh_app_setting_set --app=$app --key=ldap_autologin --value=$ldap_autologin
+ynh_app_setting_set --app=$app --key=local_accounts --value=$local_accounts
 ynh_app_setting_set --app=$app --key=language --value=$language
 ynh_app_setting_set --app=$app --key=wiki_name --value=$wiki_name
 
@@ -95,9 +99,13 @@ ynh_setup_source --dest_dir="$final_path/extensions/" --source_id="ldap_authenti
 ynh_setup_source --dest_dir="$final_path/extensions/" --source_id="ldap_provider"
 ynh_setup_source --dest_dir="$final_path/extensions/" --source_id="pluggable_auth"
 
+if [[ $ldap_autologin -eq 1 ]]; then
+    ynh_setup_source --dest_dir="$final_path/extensions/" --source_id="ldap_userinfo"
+
+
 # Note(decentral1se): Disabled and unused for now ...
 # ynh_setup_source --dest_dir="$final_path/extensions/" --source_id="ldap_groups"
-# ynh_setup_source --dest_dir="$final_path/extensions/" --source_id="ldap_userinfo"
+ynh_setup_source --dest_dir="$final_path/extensions/" --source_id="ldap_userinfo"
 # ynh_setup_source --dest_dir="$final_path/extensions/" --source_id="ldap_authorization"
 
 chmod 750 "$final_path"

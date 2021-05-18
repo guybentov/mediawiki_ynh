@@ -59,6 +59,32 @@
                 "default": true
             },
             {
+                "name": "ldap_autologin",
+                "type": "boolean",
+                "ask": {
+                    "en": "Automatically connect Yunohost users ?",
+                    "fr": "Connecter automatiquement les utilisateurs Yunohost ?"
+                },
+                "help": {
+                    "en": "Users logged in the Yunohost system won't have to re-type their password in Mediawiki.",
+                    "fr": "Les utilisateurs déjà connectés dans Yunohost n'auront pas à taper leur mot de passe dans Mediawiki."
+                },
+                "default": true
+            },
+            {
+                "name": "local_accounts",
+                "type": "boolean",
+                "ask": {
+                    "en": "Allow local accounts (non-Yunohost login) ?",
+                    "fr": "Autoriser les comptes locaux (non connectés à Yunohost) ?"
+                },
+                "help": {
+                    "en": "If this is not enabled, people will need a Yunohost account to login to the wiki.",
+                    "fr": "Si désactivé, les personnes devront avoir un compte Yunohost pour se connecter sur le wiki."
+                },
+                "default": true
+            },
+            {
                 "name": "language",
                 "type": "string",
                 "ask": {
